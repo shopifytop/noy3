@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>shopify</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .gallery {
+      max-width: 90%;
+      max-height: 90%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .gallery img {
+      margin: 10px;
+      
+      max-width: none;
+      max-height: none;
+    }
+    h2 {
+      display: none; /* 隐藏h2元素 */
+    }
+    #loginForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 水平居中 */
+    }
+    #loginForm label,
+    #loginForm input,
+    #loginForm button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loginContainer">
+    <h2>登录</h2>
+    <form id="loginForm">
+      <!-- 取消掉用户名输入框 -->
+      <!-- <label for="username">用户名：</label>
+      <input type="text" id="username" name="username" required><br><br> -->
+      <label for="password">kata sandi：</label>
+      <input type="password" id="password" name="password" required><br><br>
+      <button type="submit">Membuka</button>
+    </form>
+  </div>
+
+  <div class="gallery" style="display: none;">
+    <img src="image1.png" alt="图片1">
+    
+    <!-- 添加更多图片 -->
+  </div>
+
+  <script>
+    function checkCredentials(event) {
+      event.preventDefault(); 
+      
+      const storedPassword = '123'; 
+      const enteredPassword = document.getElementById('password').value;
+
+      if (storedPassword === enteredPassword) {
+        
+        document.getElementById('loginContainer').style.display = 'none';
+        document.querySelector('.gallery').style.display = 'flex';
+      } else {
+        alert('Kata sandi salah, silakan coba lagi.');
+      }
+    }
+
+    
+    document.getElementById('loginForm').addEventListener('submit', checkCredentials);
+  </script>
+</body>
+</html>
